@@ -1,0 +1,15 @@
+//
+// Copyright (c) 2017 Institut fuer Lern-Innovation, Friedrich-Alexander-Universitaet Erlangen-Nuernberg
+// GPLv3, see LICENSE
+//
+// @author Fred Neumann <fred.neumann@fau.de>
+// @version $Id$
+//
+
+<!-- language file start -->
+job_title#:#Combined Subscription
+job_description#:#Assigns combined subscriptions. This requires the plugin CombiSubscription.
+message_subscription_plugin_missing#:#Please install and activete the plugin CombiSubscription (https://github.com/ilifau/CombiSubscription) first!
+no_subscription_processed#:#No subscription object processed.
+one_subscription_processed#:#1 subscription object processed.
+x_subscriptions_processed#:#%s subscription objects processed.

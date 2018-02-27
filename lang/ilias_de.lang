@@ -1,0 +1,15 @@
+//
+// Copyright (c) 2017 Institut fuer Lern-Innovation, Friedrich-Alexander-Universitaet Erlangen-Nuernberg
+// GPLv3, see LICENSE
+//
+// @author Fred Neumann <fred.neumann@fau.de>
+// @version $Id$
+//
+
+<!-- language file start -->
+job_title#:#Kombi-Anmeldung
+job_description#:#Führt automatische Zuteilungen in kombinierten Anmeldungen durch. Dazu muss das Plugin CombiSubscription installiert und aktiviert sein.
+message_subscription_plugin_missing#:#Bitte installieren und aktivieren Sie das zuerst das Plugin CombiSubscription (https://github.com/ilifau/CombiSubscription)!
+no_subscription_processed#:#Kein Anmeldeobjekt zugeteilt
+one_subscription_processed#:#1 Anmeldeobjekt zugeteilt
+x_subscriptions_processed#:#%s Anmeldeobjekte zugeteilt
