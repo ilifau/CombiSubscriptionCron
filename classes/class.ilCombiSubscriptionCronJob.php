@@ -79,33 +79,25 @@ class ilCombiSubscriptionCronJob  extends ilCronJob
 		}
 		else
 		{
-			try
-			{
-				/** @var ilCombiSubscriptionPlugin $subscriptionPlugin */
-				$subscriptionPlugin = $this->plugin->getSubscriptionPlugin();
-				$number = $subscriptionPlugin->handleCronJob();
-				if ($number == 0)
-				{
-					$result->setStatus(ilCronJobResult::STATUS_NO_ACTION);
-					$result->setMessage($this->plugin->txt('no_subscription_processed'));
-				}
-				elseif ($number == 1)
-				{
-					$result->setStatus(ilCronJobResult::STATUS_OK);
-					$result->setMessage($this->plugin->txt('one_subscription_processed'));
+            /** @var ilCombiSubscriptionPlugin $subscriptionPlugin */
+            $subscriptionPlugin = $this->plugin->getSubscriptionPlugin();
+            $number = $subscriptionPlugin->handleCronJob();
+            if ($number == 0)
+            {
+                $result->setStatus(ilCronJobResult::STATUS_NO_ACTION);
+                $result->setMessage($this->plugin->txt('no_subscription_processed'));
+            }
+            elseif ($number == 1)
+            {
+                $result->setStatus(ilCronJobResult::STATUS_OK);
+                $result->setMessage($this->plugin->txt('one_subscription_processed'));
 
-				}
-				else {
-					$result->setStatus(ilCronJobResult::STATUS_OK);
-					$result->setMessage(sprintf($this->plugin->txt('x_subscriptions_processed'), $number));
-				}
-				return $result;
-			}
-			catch (Exception $e) {
-				$result->setStatus(ilCronJobResult::STATUS_FAIL);
-				$result->setMessage($e->getMessage());
-				return $result;
-			}
-		}
+            }
+            else {
+                $result->setStatus(ilCronJobResult::STATUS_OK);
+                $result->setMessage(sprintf($this->plugin->txt('x_subscriptions_processed'), $number));
+            }
+            return $result;
+        }
 	}
 }

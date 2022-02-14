@@ -1,6 +1,6 @@
-# TestArchiveCron
+# CombiSubscriptionCron
 
-Copyright (c) 2018 Institut fuer Lern-Innovation, Friedrich-Alexander-Universitaet Erlangen-Nuernberg
+Copyright (c) 2018-2022 Institut fuer Lern-Innovation, Friedrich-Alexander-Universitaet Erlangen-Nuernberg
 GPLv3, see LICENSE
 
 Author: Fred Neumann <fred.neumann@ili.fau.de>
@@ -43,6 +43,10 @@ See the documentation of the CombiSubscription plugin.
 
 VERSIONS
 --------
+
+1.3.0 for ILIAS 7 (2022-02-14)
+- Update for ILIAS 7
+- Removed unneccessay catching of exceptions
 
 1.0.0 for ILIAS 5.1 (2018-02-27)
 - initial version
