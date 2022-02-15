@@ -44,8 +44,9 @@ class ilCombiSubscriptionCronPlugin extends ilCronHookPlugin
 	 */
 	public function checkSubscriptionPluginActive()
 	{
-		/** @var ilPluginAdmin $ilPluginAdmin */
-		global$ilPluginAdmin;
+        global $DIC;
+        /** @var ilPluginAdmin $ilPluginAdmin */
+        $ilPluginAdmin = $DIC['ilPluginAdmin'];
 
 		return $ilPluginAdmin->isActive('Services', 'Repository', 'robj', 'CombiSubscription');
 	}
