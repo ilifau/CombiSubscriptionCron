@@ -13,17 +13,17 @@ class ilCombiSubscriptionCronJob  extends ilCronJob
 		$this->plugin = $plugin;
 	}
 
-	public function getId()
+	public function getId(): string
 	{
 		return "combi_subscription_cron";
 	}
 
-	public function getTitle()
+	public function getTitle(): string
 	{
 		return $this->plugin->txt('job_title');
 	}
 
-	public function getDescription()
+	public function getDescription(): string
 	{
 		if (!$this->plugin->checkSubscriptionPluginActive()) {
 			return $this->plugin->txt('message_subscription_plugin_missing');
@@ -31,22 +31,22 @@ class ilCombiSubscriptionCronJob  extends ilCronJob
 		return $this->plugin->txt('job_description');
 	}
 
-	public function getDefaultScheduleType()
+	public function getDefaultScheduleType(): int
 	{
 		return self::SCHEDULE_TYPE_IN_HOURS;
 	}
 
-	public function getDefaultScheduleValue()
+	public function getDefaultScheduleValue(): ?int
 	{
 		return 1;
 	}
 
-	public function hasAutoActivation()
+	public function hasAutoActivation(): bool
 	{
 		return true;
 	}
 
-	public function hasFlexibleSchedule()
+	public function hasFlexibleSchedule(): bool
 	{
 		return true;
 	}
@@ -55,7 +55,7 @@ class ilCombiSubscriptionCronJob  extends ilCronJob
 	 * Defines whether or not a cron job can be started manually
 	 * @return bool
 	 */
-	public function isManuallyExecutable()
+	public function isManuallyExecutable(): bool
 	{
 		if (!$this->plugin->checkSubscriptionPluginActive()) {
 			return false;
@@ -67,7 +67,7 @@ class ilCombiSubscriptionCronJob  extends ilCronJob
 	 * Run the cron job
 	 * @return ilCronJobResult
 	 */
-	public function run()
+	public function run(): ilCronJobResult
 	{
 		$result = new ilCronJobResult();
 

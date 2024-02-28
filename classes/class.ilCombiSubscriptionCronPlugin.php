@@ -5,19 +5,18 @@ include_once("./Services/Cron/classes/class.ilCronHookPlugin.php");
 
 class ilCombiSubscriptionCronPlugin extends ilCronHookPlugin
 {
-	function getPluginName()
+	function getPluginName(): string
 	{
 		return "CombiSubscriptionCron";
 	}
 
-	function getCronJobInstances()
+	function getCronJobInstances(): array
 	{
 		return array($this->getCronJobInstance('combi_subscription_cron'));
 	}
 
-	function getCronJobInstance($a_job_id)
+	function getCronJobInstance($a_job_id): ilCronJob
 	{
-		$this->includeClass('class.ilCombiSubscriptionCronJob.php');
 		return new ilCombiSubscriptionCronJob($this);
 	}
 
@@ -26,10 +25,12 @@ class ilCombiSubscriptionCronPlugin extends ilCronHookPlugin
 	 * @return bool
 	 * @throws ilPluginException
 	 */
-	function beforeActivation()
+	function beforeActivation(): bool
 	{
+		global $DIC;
+
 		if (!$this->checkSubscriptionPluginActive()) {
-			ilUtil::sendFailure($this->txt("message_subscription_plugin_missing"), true);
+			$DIC->ui()->mainTemplate()->setOnScreenMessage('failure', $this->txt("message_subscription_plugin_missing"), true);
 			// this does not show the message
 			// throw new ilPluginException($this->txt("message_creator_plugin_missing"));
 			return false;
@@ -44,11 +45,19 @@ class ilCombiSubscriptionCronPlugin extends ilCronHookPlugin
 	 */
 	public function checkSubscriptionPluginActive()
 	{
-        global $DIC;
-        /** @var ilPluginAdmin $ilPluginAdmin */
-        $ilPluginAdmin = $DIC['ilPluginAdmin'];
+    	global $DIC;
 
-		return $ilPluginAdmin->isActive('Services', 'Repository', 'robj', 'CombiSubscription');
+        /** @var ilComponentFactory $factory */
+        $factory = $DIC["component.factory"];
+
+        /** @var ilPlugin $plugin */
+        Foreach ($factory->getActivePluginsInSlot('robj') as $plugin) {
+            if ($plugin->getPluginName() == 'CombiSubscription') {
+                return $plugin->isActive();
+            }
+        }
+        return false;
+
 	}
 
 	/**
