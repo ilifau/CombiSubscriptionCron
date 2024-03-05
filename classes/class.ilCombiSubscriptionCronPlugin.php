@@ -51,7 +51,7 @@ class ilCombiSubscriptionCronPlugin extends ilCronHookPlugin
         $factory = $DIC["component.factory"];
 
         /** @var ilPlugin $plugin */
-        Foreach ($factory->getActivePluginsInSlot('robj') as $plugin) {
+        foreach ($factory->getActivePluginsInSlot('robj') as $plugin) {
             if ($plugin->getPluginName() == 'CombiSubscription') {
                 return $plugin->isActive();
             }
@@ -66,6 +66,11 @@ class ilCombiSubscriptionCronPlugin extends ilCronHookPlugin
 	 */
 	public function getSubscriptionPlugin()
 	{
-		return ilPluginAdmin::getPluginObject('Services', 'Repository', 'robj', 'CombiSubscription');
+		global $DIC;
+
+        /** @var ilComponentFactory $factory */
+        $factory = $DIC["component.factory"];
+
+		return $factory->getPlugin('xcos');
 	}
 }
