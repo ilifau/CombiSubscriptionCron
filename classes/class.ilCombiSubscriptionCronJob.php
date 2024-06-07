@@ -31,7 +31,7 @@ class ilCombiSubscriptionCronJob  extends ilCronJob
 		return $this->plugin->txt('job_description');
 	}
 
-	public function getDefaultScheduleType(): int
+	public function getDefaultScheduleType(): ILIAS\Cron\Schedule\CronJobScheduleType
 	{
 		return self::SCHEDULE_TYPE_IN_HOURS;
 	}
