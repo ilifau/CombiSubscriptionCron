@@ -2,6 +2,7 @@
 // Copyright (c) 2018 Institut fuer Lern-Innovation, Friedrich-Alexander-Universitaet Erlangen-Nuernberg, GPLv3, see LICENSE
 
 include_once "Services/Cron/classes/class.ilCronJob.php";
+use ILIAS\Cron\Schedule\CronJobScheduleType;
 
 class ilCombiSubscriptionCronJob  extends ilCronJob
 {
@@ -33,7 +34,7 @@ class ilCombiSubscriptionCronJob  extends ilCronJob
 
 	public function getDefaultScheduleType(): ILIAS\Cron\Schedule\CronJobScheduleType
 	{
-		return self::SCHEDULE_TYPE_IN_HOURS;
+		return CronJobScheduleType::SCHEDULE_TYPE_IN_HOURS;
 	}
 
 	public function getDefaultScheduleValue(): ?int
