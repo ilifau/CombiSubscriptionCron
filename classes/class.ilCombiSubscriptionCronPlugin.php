@@ -1,8 +1,6 @@
 <?php
 // Copyright (c) 2018 Institut fuer Lern-Innovation, Friedrich-Alexander-Universitaet Erlangen-Nuernberg, GPLv3, see LICENSE
 
-include_once("./Services/Cron/classes/class.ilCronHookPlugin.php");
-
 class ilCombiSubscriptionCronPlugin extends ilCronHookPlugin
 {
 	function getPluginName(): string
